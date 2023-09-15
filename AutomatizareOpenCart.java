@@ -19,7 +19,7 @@ public class AutomatizareOpenCart extends Principal {
             int rowCount = sheet.getLastRowNum();
             obiect.beforeTest();
             driver.get("https://demo.opencart.com/index.php?route=account/register&language=en-gb");
-
+                //creem variabile pentru a obtine datele din fisierul JavaExcel
             for (int i = 1; i <= rowCount; i++) {
                 Row row = sheet.getRow(i);
                 String nume = row.getCell(0).getStringCellValue();
