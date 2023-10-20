@@ -22,8 +22,8 @@ import java.io.IOException;
                 Workbook wb = new XSSFWorkbook(fis);
                 Sheet sheet = wb.getSheetAt(0);
                 for (Row row : sheet) {
-                    if (row.getRowNum() == 0) continue; // skip the header row
-
+                    if (row.getRowNum() == 0) continue; // trecem peste rindul de antet 
+                    // extragem valorile din excel si le atribuim variabelelor 
                     String nume = row.getCell(0).getStringCellValue();
                     String prenume = row.getCell(1).getStringCellValue();
                     int varsta = (int) row.getCell(2).getNumericCellValue();
@@ -33,7 +33,7 @@ import java.io.IOException;
 
                     WebElement btn_add = driver.findElement(By.id("addNewRecordButton"));
                     btn_add.click();
-
+                    // identificam elementele web
                     WebElement first_name_input = driver.findElement(By.id("firstName"));
                     WebElement last_name_input = driver.findElement(By.id("lastName"));
                     WebElement email_input = driver.findElement(By.id("userEmail"));
@@ -41,7 +41,7 @@ import java.io.IOException;
                     WebElement salary_input = driver.findElement(By.id("salary"));
                     WebElement departament_input = driver.findElement(By.id("department"));
                     WebElement btn_submit = driver.findElement(By.id("submit"));
-
+                    // completam campurile 
                     first_name_input.sendKeys(nume);
                     last_name_input.sendKeys(prenume);
                     email_input.sendKeys(email);
