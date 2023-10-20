@@ -20,23 +20,23 @@ public class CreareFisierExcel {
             headerRow.createCell(4).setCellValue("Salariu");
             headerRow.createCell(5).setCellValue("Departament");
 
-            // Adăugarea datelor fictive pentru 50 de rânduri folosind Java Faker
+            // Adăugarea datelor fictive 
             for (int i = 1; i <= 50; i++) {
                 Row row = sheet.createRow(i);
                 row.createCell(0).setCellValue(faker.name().firstName());
                 row.createCell(1).setCellValue(faker.name().lastName());
                 row.createCell(2).setCellValue(faker.internet().emailAddress());
                 row.createCell(3).setCellValue(faker.number().numberBetween(18, 65)); // Varsta intre 18 si 65 de ani
-                row.createCell(4).setCellValue(faker.number().numberBetween(10000,30000));
+                row.createCell(4).setCellValue(faker.number().numberBetween(10000,30000)); // salariu intre 10000 si 30000
                 row.createCell(5).setCellValue(faker.address().cityName());
             }
 
-            // Auto-size coloanele pentru a se potrivi cu conținutul
+            // facem  auto-size la  coloane
             for (int i = 0; i < 6; i++) {
                 sheet.autoSizeColumn(i);
             }
 
-            // Salvarea fișierului Excel
+            // Salvam fișierul excel
             try (FileOutputStream fileOut = new FileOutputStream("JavaExcel.xlsx")) {
                 workbook.write(fileOut);
                 System.out.println("Fișierul Excel a fost creat cu succes!");
